@@ -1,0 +1,138 @@
+﻿<UserControl x:Class="KungFCollage.MainWindow"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:local="clr-namespace:KungFCollage"
+  mc:Ignorable="d"
+  d:DataContext="{d:DesignInstance {x:Type local:ViewModel}, IsDesignTimeCreatable=True}">
+    <DockPanel Width="1440" Height="900">
+        <Border DockPanel.Dock="Top" Style="{StaticResource BlueBorder}">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Button Width="150" Height="40">123</Button>
+                    <Button Width="150" Height="40">
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="Button.Click">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetName="centerPanel" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0"  Value="{x:Static Visibility.Visible}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetName="centerPanel" Storyboard.TargetProperty="Tag">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0"  Value="buildingForm"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
+                    <Button Width="150" Height="40">123</Button>
+                </StackPanel>
+                <Button Width="120" Height="150" HorizontalAlignment="Left">12345</Button>
+            </StackPanel>
+        </Border>
+        <Border DockPanel.Dock="Bottom" Height="40" Style="{StaticResource BlueBorder}">
+            <StackPanel Orientation="Horizontal">
+                <Button HorizontalAlignment="Left" >Button Middle</Button>
+            </StackPanel>
+        </Border>
+        <Border DockPanel.Dock="Left" Style="{StaticResource BlueBorder}">
+            <StackPanel Name="dataPanel" Grid.Row="1" Margin="0,60,0,0" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <StackPanel Name="buildingDataPanel" Width="280">
+                    <Label Foreground="Black" Background="#FF7C7C7C" HorizontalContentAlignment="Center">12345</Label>
+                    <Button>abcde</Button>
+                    <Button>abcde</Button>
+                    <Button>abcde</Button>
+                    <Button>abcde</Button>
+                </StackPanel>
+                <Button Name ="dataPanelHiddeButton" Width="30" Height="30" VerticalAlignment="Top">
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.Click">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames  Storyboard.TargetName="dataPanel" Storyboard.TargetProperty="Visibility">
+                                        <DiscreteObjectKeyFrame KeyTime="0:0:0"  Value="{x:Static Visibility.Hidden}"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+            </StackPanel>
+        </Border>
+        <Border DockPanel.Dock="Right" Style="{StaticResource BlueBorder}">
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0">
+                <Slider Maximum="100" Width="200"></Slider>
+                <Slider Maximum="100" Width="200"></Slider>
+            </StackPanel>
+        </Border>
+        <Border Style="{StaticResource BlueBorder}">
+            <!--<StackPanel Name="centerPanel" Orientation ="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Grid>
+                    <Viewbox>
+                        <ListView Name="buildingForms" HorizontalAlignment="Center" VerticalAlignment="Top" Width="800" Height="600">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Name}"/>
+                                    <GridViewColumn Header="Age" Width="50" DisplayMemberBinding="{Binding Age}" />
+                                    <GridViewColumn Header="Mail" Width="150" DisplayMemberBinding="{Binding Mail}" />
+                                </GridView>
+                            </ListView.View>
+                            <ListView.Style>
+                                <Style TargetType="{x:Type ListView}">
+                                    <Style.Triggers>
+                                        <DataTrigger Value="buildingForm" Binding="{Binding RelativeSource={RelativeSource Self}, Path=Parent.Tag}">
+                                            <Setter Property="Visibility" Value="Hidden" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListView.Style>
+                        </ListView>
+                    </Viewbox>
+
+                </Grid>
+                <Button Width="30" Height="30" VerticalAlignment="Top">
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.Click">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames  Storyboard.TargetName="centerPanel" Storyboard.TargetProperty="Visibility">
+                                        <DiscreteObjectKeyFrame KeyTime="0:0:0"  Value="{x:Static Visibility.Hidden}"/>
+                                    </ObjectAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+            </StackPanel>-->
+            <TabControl Background="{x:Null}">
+                <TabItem>
+                    <StackPanel>
+                        <TextBlock>Enter some text</TextBlock>
+                        <TextBox Name="textBox1" Width="50"/>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Tab 2" >
+                    <!--Bind TextBlock.Text to the TextBox on the first TabItem.-->
+                    <TextBlock Text="{Binding ElementName=textBox1, Path=Text}"/>
+                </TabItem>
+            </TabControl>
+        </Border>
+    </DockPanel>
+    <!--<Grid>
+    <Grid.Background>
+      <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Offset="0" Color="{Binding TopColor}"/>
+        <GradientStop Offset="1" Color="{Binding BottomColor}"/>
+      </LinearGradientBrush>
+    </Grid.Background>
+    <Viewbox>
+      <StackPanel Margin="100">
+        <TextBlock Text="Hello World!" Foreground="White" TextAlignment="Center" FontSize="16"/>
+        <Button Content="Normal Button" Margin="0,10" Command="{Binding ButtonClicked}"/>
+        <Button Content="Styled Button" Style="{StaticResource StyledButton}" Command="{Binding ButtonClicked}"/>
+      </StackPanel>
+    </Viewbox>
+  </Grid>-->
+</UserControl>
