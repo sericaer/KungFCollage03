@@ -5,8 +5,4 @@
         <Setter Property="Background" Value="#FF0DCBC2"/>
         <Setter Property="Foreground" Value="White"/>
     </Style>
-    <Style x:Key="BlueBorder" TargetType="Border">
-        <Setter Property="BorderBrush" Value="Blue"/>
-        <Setter Property="BorderThickness" Value="1"/>
-    </Style>
 </ResourceDictionary>
